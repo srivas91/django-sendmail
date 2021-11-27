@@ -14,8 +14,9 @@ def contactView(request):
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
+            to_email = form.cleaned_data['to_email']
             try:
-                send_mail(subject, message, from_email, ['tomail@gmail.com'])
+                send_mail(subject, message, from_email, [to_email])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('success')
